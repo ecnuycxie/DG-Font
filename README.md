@@ -1,2 +1,70 @@
-# DG-Font
-The pytorch implementation of  DG-Font: Deformable Generative Networks for Unsupervised Font Generation
+# DG-Font: Deformable Generative Networks for Unsupervised Font Generation
+The source code for 'DG-Font: Deformable Generative Networks for Unsupervised Font Generation', by Yangchen Xie, Xinyuan Chen, Li sun and Yue lu. The paper was accepted by CVPR2021.
+
+Arvix version
+
+# Dependencies
+
+Libarary
+-------------
+
+    pytorch==1.1.0 or 1.2.0  
+    tqdm  
+    opencv-python  
+    scipy  
+    sklearn
+    matplotlib  
+    pillow  
+    tensorboardX 
+
+DCN
+--------------
+
+please refer to https://github.com/chengdazhi/Deformable-Convolution-V2-PyTorch/tree/pytorch_1.0.0 to install the dependencies of deformable convolution.
+
+Dataset
+--------------
+[方正字库](https://www.foundertype.com/index.php/FindFont/index) provides free font download for non-commercial users.
+
+Example directory hierarchy
+
+    Project
+    |--- DG-Font
+    |          |--- main.py
+    |          |--- train
+    |                 |--- train.py
+    |
+    |--- data
+           |--- font1
+           |--- font2
+                 |--- 1.png
+                 |--- 2.png
+                 |--- ...
+           |--- ...
+
+
+
+# How to run
+
+prepare dataset
+
+    python font2img.py
+
+train
+
+    python main.py --gpu GPU_ID --img_size IMAGESIZE --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE
+
+test
+
+    python main.py --gpu GPU_ID --img_size IMAGESIZE --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --validation --load_model $DIR_TO_LOAD
+    
+# Acknowledge
+
+
+# Bibtex
+    @inproceedings{DG-Font,
+        title={DG-Font: Deformable Generative Networks for Unsupervised Font Generation},
+        author={Yangchen Xie, Xinyuan Chen, Li sun, Yue lu},
+        booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+        year={2021}
+    }
