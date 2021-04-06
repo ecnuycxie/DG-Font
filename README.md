@@ -30,6 +30,7 @@ Example directory hierarchy
 
     Project
     |--- DG-Font
+    |          |--- font2img.py    
     |          |--- main.py
     |          |--- train
     |                 |--- train.py
@@ -37,8 +38,8 @@ Example directory hierarchy
     |--- data
            |--- font1
            |--- font2
-                 |--- 1.png
-                 |--- 2.png
+                 |--- 0000.png
+                 |--- 0001.png
                  |--- ...
            |--- ...
 
@@ -48,11 +49,11 @@ Example directory hierarchy
 
 prepare dataset
 
-    python font2img.py
+    python font2img.py --ttf_path ttf_folder --chara character.txt --save_path save_folder --img_size IMAGESIZE --chara_size CHARACTERSIZE
 
 train
 
-    python main.py --gpu GPU_ID --img_size IMAGESIZE --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE
+    python main.py --gpu GPU_ID --img_size IMAGESIZE --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --val_num TEST_IMGS_NUM_FOR_EACH_CLASS
 
 test
 
