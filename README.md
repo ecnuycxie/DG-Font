@@ -10,6 +10,7 @@ Libarary
 
     pytorch==1.1.0 or 1.2.0  
     tqdm  
+    numpy
     opencv-python  
     scipy  
     sklearn
@@ -59,7 +60,8 @@ test
 
     python main.py --gpu GPU_ID --img_size IMAGESIZE --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --validation --load_model $DIR_TO_LOAD
     
-# Acknowledge
+# Acknowledgements
+We would like to thank @Johnson yue and 上海驿创信息技术有限公司 for their advices in code. Our code  is based on (TUNIT)(https://github.com/clovaai/tunit).
 
 
 # Bibtex
