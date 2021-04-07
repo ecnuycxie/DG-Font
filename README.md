@@ -64,7 +64,7 @@ test
     python main.py --gpu GPU_ID --img_size 80 --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --validation --load_model $DIR_TO_LOAD
     
 # Acknowledgements
-We would like to thank @Johnson yue and 上海驿创信息技术有限公司 for their advices in code. Our code  is based on (TUNIT)(https://github.com/clovaai/tunit).
+We would like to thank [Johnson yue](https://github.com/Johnson-yue) and 上海驿创信息技术有限公司 for their advices in code. Our code  is based on [TUNIT](https://github.com/clovaai/tunit).
 
 
 # Bibtex
