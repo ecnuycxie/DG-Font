@@ -51,7 +51,7 @@ parser.add_argument('--log_step', default=100, type=int)
 
 parser.add_argument('--sty_dim', default=128, type=int, help='The size of style vector')
 parser.add_argument('--output_k', default=400, type=int, help='Total number of classes to use')
-parser.add_argument('--img_size', default=128, type=int, help='Input image size')
+parser.add_argument('--img_size', default=80, type=int, help='Input image size')
 parser.add_argument('--dims', default=2048, type=int, help='Inception dims for FID')
 
 parser.add_argument('--load_model', default=None, type=str, metavar='PATH',
