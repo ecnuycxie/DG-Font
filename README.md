@@ -50,15 +50,15 @@ Example directory hierarchy
 
 prepare dataset
 
-    python font2img.py --ttf_path ttf_folder --chara character.txt --save_path save_folder --img_size IMAGESIZE --chara_size CHARACTERSIZE
+    python font2img.py --ttf_path ttf_folder --chara character.txt --save_path save_folder --img_size 80 --chara_size CHARACTERSIZE
 
 train
 
-    python main.py --gpu GPU_ID --img_size IMAGESIZE --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --val_num TEST_IMGS_NUM_FOR_EACH_CLASS
+    python main.py --gpu GPU_ID --img_size 80 --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --val_num TEST_IMGS_NUM_FOR_EACH_CLASS
 
 test
 
-    python main.py --gpu GPU_ID --img_size IMAGESIZE --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --validation --load_model $DIR_TO_LOAD
+    python main.py --gpu GPU_ID --img_size 80 --data_path /path/to --output_k CLASS_NUM --batch_size BATCHSIZE --validation --load_model $DIR_TO_LOAD
     
 # Acknowledgements
 We would like to thank @Johnson yue and 上海驿创信息技术有限公司 for their advices in code. Our code  is based on (TUNIT)(https://github.com/clovaai/tunit).
