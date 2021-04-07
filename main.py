@@ -258,7 +258,7 @@ def print_args(args):
 
 
 def build_model(args):
-    args.to_train = 'CDGI'
+    args.to_train = 'CDG'
 
     networks = {}
     opts = {}
@@ -270,8 +270,6 @@ def build_model(args):
     if 'G' in args.to_train:
         networks['G'] = Generator(args.img_size, args.sty_dim, use_sn=False)
         networks['G_EMA'] = Generator(args.img_size, args.sty_dim, use_sn=False)
-    if 'I' in args.to_train:
-        networks['inceptionNet'] = InceptionV3([InceptionV3.BLOCK_INDEX_BY_DIM[args.dims]])
 
     if args.distributed:
         if args.gpu is not None:
@@ -328,8 +326,6 @@ def load_model(args, networks, opts):
             args.start_epoch = checkpoint['epoch']
             if not args.multiprocessing_distributed:
                 for name, net in networks.items():
-                    if name in ['inceptionNet']:
-                        continue
                     tmp_keys = next(iter(checkpoint[name + '_state_dict'].keys()))
                     if 'module' in tmp_keys:
                         tmp_new_dict = OrderedDict()
@@ -392,8 +388,6 @@ def save_model(args, epoch, networks, opts):
             save_dict['epoch'] = epoch + 1
             for name, net in networks.items():
                 save_dict[name+'_state_dict'] = net.state_dict()
-                if name in ['G_EMA', 'inceptionNet', 'C_EMA']:
-                    continue
                 save_dict[name.lower()+'_optimizer'] = opts[name].state_dict()
             print("SAVE CHECKPOINT[{}] DONE".format(epoch+1))
             save_checkpoint(save_dict, check_list, args.log_dir, epoch + 1)
