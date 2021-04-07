@@ -40,11 +40,11 @@ parser.add_argument('--model_name', type=str, default='GAN',
                          'ex) --model_name=ABC generates ABC_20191230-131145 in logs and results')
 
 parser.add_argument('--epochs', default=200, type=int, help='Total number of epochs to run. Not actual epoch.')
-parser.add_argument('--iters', default=500, type=int, help='Total number of iterations per epoch')
+parser.add_argument('--iters', default=1000, type=int, help='Total number of iterations per epoch')
 parser.add_argument('--batch_size', default=32, type=int,
                     help='Batch size for training')
 parser.add_argument('--val_num', default=190, type=int,help='Number of test images for each style')
-parser.add_argument('--val_batch', default=1, type=int,
+parser.add_argument('--val_batch', default=10, type=int,
                     help='Batch size for validation. '
                          'The result images are stored in the form of (val_batch, val_batch) grid.')
 parser.add_argument('--log_step', default=100, type=int)
@@ -247,7 +247,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
         trainFunc(train_loader, networks, opts, epoch, args, {'logger': logger})
 
-        #validationFunc(val_loader, networks, epoch, args, {'logger': logger})
+        validationFunc(val_loader, networks, epoch, args, {'logger': logger})
 
 #################
 # Sub functions #
