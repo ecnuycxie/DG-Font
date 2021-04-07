@@ -16,11 +16,11 @@ sys.path.append('..')
 from modules import modulated_deform_conv  
 
 class Generator(nn.Module):   
-    def __init__(self, img_size=128, sty_dim=64, n_res=2, use_sn=False):
+    def __init__(self, img_size=80, sty_dim=64, n_res=2, use_sn=False):
         super(Generator, self).__init__()
         print("Init Generator")
 
-        self.nf = 64 if img_size < 256 else 32
+        self.nf = 64 
         self.nf_mlp = 256
 
         self.decoder_norm = 'adain'
@@ -31,10 +31,8 @@ class Generator(nn.Module):
         print("GENERATOR NF : ", self.nf)
 
         s0 = 16
-
-        n_downs = int(np.log2(img_size//s0))
-
-        nf_dec = self.nf * 2**n_downs
+        n_downs = 2
+        nf_dec = 256
 
         self.cnt_encoder = ContentEncoder(self.nf, n_downs, n_res, 'in', 'relu', 'reflect')
         self.decoder = Decoder(nf_dec, sty_dim, n_downs, n_res, self.decoder_norm, self.decoder_norm, 'relu', 'reflect', use_sn=use_sn)
@@ -70,10 +68,9 @@ class Decoder(nn.Module):
         self.model = nn.ModuleList()
         self.model.append(ResBlocks(n_res, nf, res_norm, act, pad, use_sn=use_sn))
 
-        for _ in range(n_downs-1):
-            self.model.append(nn.Upsample(scale_factor=2))
-            self.model.append(Conv2dBlock(nf, nf//2, 5, 1, 2, norm=dec_norm, act=act, pad_type=pad, use_sn=use_sn))
-            nf //= 2
+        self.model.append(nn.Upsample(scale_factor=2))
+        self.model.append(Conv2dBlock(nf, nf//2, 5, 1, 2, norm=dec_norm, act=act, pad_type=pad, use_sn=use_sn))
+        nf //= 2
 
         self.model.append(nn.Upsample(scale_factor=2))
         self.model.append(Conv2dBlock(2*nf, nf//2, 5, 1, 2, norm=dec_norm, act=act, pad_type=pad, use_sn=use_sn))
@@ -113,16 +110,8 @@ class ContentEncoder(nn.Module):
         nf = nf_cnt
 
         self.model = nn.ModuleList()
-        # self.model.append(Conv2dBlock(3, nf, 7, 1, 3, norm=norm, act=act, pad_type=pad, use_sn=use_sn))
-
-        # for _ in range(n_downs):
-        #     self.model.append(Conv2dBlock(nf, 2 * nf, 4, 2, 1, norm=norm, act=act, pad_type=pad, use_sn=use_sn))
-        #     nf *= 2
-        
         self.model.append(ResBlocks(n_res, 256, norm=norm, act=act, pad_type=pad, use_sn=use_sn))
-
         self.model = nn.Sequential(*self.model)
-
         self.dcn1 = modulated_deform_conv.ModulatedDeformConvPack(3, 64, kernel_size=(7, 7), stride=1, padding=3, groups=1, deformable_groups=1).cuda()
         self.dcn2 = modulated_deform_conv.ModulatedDeformConvPack(64, 128, kernel_size=(4, 4), stride=2, padding=1, groups=1, deformable_groups=1).cuda()
         self.dcn3 = modulated_deform_conv.ModulatedDeformConvPack(128, 256, kernel_size=(4, 4), stride=2, padding=1, groups=1, deformable_groups=1).cuda()
