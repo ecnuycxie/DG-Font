@@ -1,7 +1,7 @@
 # DG-Font: Deformable Generative Networks for Unsupervised Font Generation
 The source code for 'DG-Font: Deformable Generative Networks for Unsupervised Font Generation', by Yangchen Xie, Xinyuan Chen, Li sun and Yue lu. The paper was accepted by CVPR2021.
 
-Arvix version
+[Arvix version](https://arxiv.org/abs/2104.03064)
 
 # Gallery
 ![image](https://github.com/ecnuycxie/DG-Font/blob/main/images/results.png)
