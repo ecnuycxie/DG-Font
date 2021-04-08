@@ -75,15 +75,15 @@ def validateUN(data_loader, networks, epoch, args, additional=None):
                     for sample_idx in range(args.val_batch):
                         x_ref_tmp = x_ref[sample_idx: sample_idx + 1].repeat((args.val_batch, 1, 1, 1))
     
-                        c_src = G_EMA.cnt_encoder(x_src)
+                        c_src, skip1, skip2 = G_EMA.cnt_encoder(x_src)
                         s_ref = C_EMA(x_ref_tmp, sty=True)
-                        x_res_ema_tmp = G_EMA.decode(c_src, s_ref)
+                        x_res_ema_tmp,_ = G_EMA.decode(c_src, s_ref, skip1, skip2)
     
                         x_ref_tmp = x_ref_rnd[sample_idx: sample_idx + 1].repeat((args.val_batch, 1, 1, 1))
     
-                        c_src = G_EMA.cnt_encoder(x_src_rnd)
+                        c_src, skip1, skip2 = G_EMA.cnt_encoder(x_src_rnd)
                         s_ref = C_EMA(x_ref_tmp, sty=True)
-                        x_rnd_ema_tmp = G_EMA.decode(c_src, s_ref)
+                        x_rnd_ema_tmp,_ = G_EMA.decode(c_src, s_ref, skip1, skip2)
     
                         x_res_ema_tmp = torch.cat((x_ref[sample_idx: sample_idx + 1], x_res_ema_tmp), 0)
                         x_res_ema = torch.cat((x_res_ema, x_res_ema_tmp), 0)
