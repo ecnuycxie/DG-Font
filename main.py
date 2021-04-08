@@ -388,6 +388,8 @@ def save_model(args, epoch, networks, opts):
             save_dict['epoch'] = epoch + 1
             for name, net in networks.items():
                 save_dict[name+'_state_dict'] = net.state_dict()
+                if name in ['G_EMA', 'C_EMA']:
+                    continue
                 save_dict[name.lower()+'_optimizer'] = opts[name].state_dict()
             print("SAVE CHECKPOINT[{}] DONE".format(epoch+1))
             save_checkpoint(save_dict, check_list, args.log_dir, epoch + 1)
