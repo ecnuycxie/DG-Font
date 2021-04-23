@@ -11,7 +11,7 @@ The source code for 'DG-Font: Deformable Generative Networks for Unsupervised Fo
 Libarary
 -------------
 
-    pytorch==1.1.0 or 1.2.0  
+    pytorch (>=1.0)
     tqdm  
     numpy
     opencv-python  
