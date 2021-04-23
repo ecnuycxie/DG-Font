@@ -39,7 +39,7 @@ parser.add_argument('--model_name', type=str, default='GAN',
                     help='Prefix of logs and results folders. '
                          'ex) --model_name=ABC generates ABC_20191230-131145 in logs and results')
 
-parser.add_argument('--epochs', default=200, type=int, help='Total number of epochs to run. Not actual epoch.')
+parser.add_argument('--epochs', default=250, type=int, help='Total number of epochs to run. Not actual epoch.')
 parser.add_argument('--iters', default=1000, type=int, help='Total number of iterations per epoch')
 parser.add_argument('--batch_size', default=32, type=int,
                     help='Batch size for training')
@@ -233,7 +233,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     for epoch in range(args.start_epoch, args.epochs):
         print("START EPOCH[{}]".format(epoch+1))
-        if (epoch + 1) % (args.epochs // 10) == 0:
+        if (epoch + 1) % (args.epochs // 25) == 0:
             save_model(args, epoch, networks, opts)
 
         if args.distributed:
