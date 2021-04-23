@@ -4,6 +4,7 @@ The source code for 'DG-Font: Deformable Generative Networks for Unsupervised Fo
 [Arvix version](https://arxiv.org/abs/2104.03064)
 
 # Gallery
+![image](https://github.com/ecnuycxie/DG-Font/blob/main/images/results2.png)
 ![image](https://github.com/ecnuycxie/DG-Font/blob/main/images/results.png)
 
 # Dependencies
