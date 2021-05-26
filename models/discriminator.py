@@ -26,9 +26,9 @@ class Discriminator(nn.Module):
             blocks += [ActFirstResBlk(dim_in, dim_in, downsample=False)]
             blocks += [ActFirstResBlk(dim_in, dim_out, downsample=True)]
             dim_in = dim_out
-
+        last_kernel = int(image_size / 2**repeat_num)
         blocks += [nn.LeakyReLU(0.2)]
-        blocks += [nn.Conv2d(dim_out, dim_out, 5, 1, 0)]
+        blocks += [nn.Conv2d(dim_out, dim_out, last_kernel, 1, 0)]
         blocks += [nn.LeakyReLU(0.2)]
         blocks += [nn.Conv2d(dim_out, num_domains, 1, 1, 0)]
         self.main = nn.Sequential(*blocks)
