@@ -28,7 +28,7 @@ class Discriminator(nn.Module):
             dim_in = dim_out
 
         blocks += [nn.LeakyReLU(0.2)]
-        blocks += [nn.Conv2d(dim_out, dim_out, 5, 1, 0)]
+        blocks += [nn.Conv2d(dim_out, dim_out, 4, 1, 0)]
         blocks += [nn.LeakyReLU(0.2)]
         blocks += [nn.Conv2d(dim_out, num_domains, 1, 1, 0)]
         self.main = nn.Sequential(*blocks)
