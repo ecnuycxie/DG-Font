@@ -20,7 +20,7 @@ class GuidingNet(nn.Module):
     def __init__(self, img_size=64, output_k={'cont': 128, 'disc': 10}):
         super(GuidingNet, self).__init__()
         # network layers setting
-        self.features = make_layers(cfg['vgg11'], False)
+        self.features = make_layers(cfg['vgg11'], True)
 
         self.disc = nn.Linear(512, output_k['disc'])
         self.cont = nn.Linear(512, output_k['cont'])
