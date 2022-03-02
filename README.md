@@ -2,7 +2,8 @@
 The source code for 'DG-Font: Deformable Generative Networks for Unsupervised Font Generation', by Yangchen Xie, Xinyuan Chen, Li sun and Yue lu. The paper was accepted by CVPR2021.
 
 [Arvix version](https://arxiv.org/abs/2104.03064)
-
+# Note
+Note that the current repo only works with 80x80 resolution images. An improved version of DGFont is coming soon, which will also fit 128x128 and 256x256 resolution images.
 # Gallery
 ![image](https://github.com/ecnuycxie/DG-Font/blob/main/images/results2.png)
 ![image](https://github.com/ecnuycxie/DG-Font/blob/main/images/results.png)
