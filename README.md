@@ -3,7 +3,7 @@ The source code for 'DG-Font: Deformable Generative Networks for Unsupervised Fo
 
 [Arvix version](https://arxiv.org/abs/2104.03064)
 # Note
-Note that the current repo only works with 80x80 resolution images. An improved version of DGFont is coming soon, which will also fit 128x128 and 256x256 resolution images.
+Note that the current repo only works with 80x80 resolution images. An improved version of DGFont, [DGFont++](https://arxiv.org/abs/2212.14742), is coming soon, which will also fit 128x128 and 256x256 resolution images.
 # Gallery
 ![image](https://github.com/ecnuycxie/DG-Font/blob/main/images/results2.png)
 ![image](https://github.com/ecnuycxie/DG-Font/blob/main/images/results.png)
